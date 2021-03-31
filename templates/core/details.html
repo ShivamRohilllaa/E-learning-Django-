@@ -1,0 +1,669 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block body %}
+
+<!------ AWS Architect Certification Training-------->
+<section class="Certification">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12 no-padding">
+        <div class="Certification-1">
+          <ul class="brdcrm hidden-xs">
+            <li><a href="{% url 'home' %}">Home ></a></li>
+            <li><a href="#">{{posts.category.title}} ></a></li>
+            <li><a href="#">{{posts.title}} ></a></li>
+          </ul>
+          <div class="clp_title_top">
+            <span>Best Seller</span>
+            <h1>{{posts.title|title}}</h1>
+            <div class="live_cl">{{posts.badge}}</div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="col-lg-3 col-md-4 col-sm-12 col-xs-12 no-padding hidden-xs hidden-sm cc_cursor"
+      >
+        <div class="cnt_box">
+          <span class="iconcall">
+            <i class="fa fa-phone" aria-hidden="true"></i>
+          </span>
+          <div class="cnt_info">
+            <span class="text">Have Queries? Ask us</span>
+            <a href="#">08040423753</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!----Video Panel--- -->
+<section class="container-flud video_info light_blue_back">
+  <div class="container clp-video-panel">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="panel-box">
+          <iframe
+            width="100%"
+            height="200"
+            src="{{posts.youtube}}"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+
+      <div class="col-lg-8 col-md-8 col-sm-7 col-xs-12 no-padding blurb_course">
+        <div class="blurb_bx">
+          <div style="text-align: justify">{{posts.desc|safe}}</div>
+        </div>
+        <div class="course_rating_user">
+          <span class="cour_reviewicons">
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+          </span>
+          <span class="lrner_cnt"> <span>87k</span> + satisfied learners </span>
+          <span class="red_rivw ga-click"> Read Reviews </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!------AWS-Architect pb-5----------- -->
+<section class="AWS-Architect pb-5">
+  <div class="container">
+    <h2>{{posts.why_title}}</h2>
+    <div class="row">
+      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 take_the_course_bx">
+        <div class="box_one_img">
+          <img src="{% static 'images/download.png' %}" />
+        </div>
+        <span> {{posts.why1|safe}}</span>
+      </div>
+
+      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 take_the_course_bx">
+        <div class="box_one_img">
+          <img src="{% static 'images/download.png' %}" />
+        </div>
+        <span> {{posts.why2|safe}}</span>
+      </div>
+
+      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 take_the_course_bx">
+        <div class="box_one_img">
+          <img src="{% static 'images/download.png' %}" />
+        </div>
+        <span> {{posts.why3|safe}}</span>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="navigation-wrap bg-light start-header start-style">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <nav class="navbar navbar-expand-md navbar-light">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto py-4 py-md-0">
+              <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                <a class="nav-link" href="#">Upcoming Batches</a>
+              </li>
+              <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                <a class="nav-link" href="#">Curriculum</a>
+              </li>
+              <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                <a class="nav-link" href="#">Course Details</a>
+              </li>
+              <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                <a class="nav-link" href="#">Certification</a>
+              </li>
+              <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                <a class="nav-link" href="#">Reviews</a>
+              </li>
+              <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                <a class="nav-link" href="#">Projects</a>
+              </li>
+              <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                <a class="nav-link" href="#">Features</a>
+              </li>
+              <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                <a class="nav-link" href="#">FAQs</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+<!----clp_batch_table ------>
+<section class="container-flud clp_batch_table blue_gradient_background">
+  <div class="container">
+    <h2 class="title_box_heading mb-4">
+      Instructor-led AWS Architect live online classes
+    </h2>
+    <div class="row sub_content_bx">
+      <div class="col-md-9 no-padding box_heading_section">
+        <div class="table-starts">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                {% comment %}
+                <tr>
+                  <th scope="col">Nov 30th</th>
+                  <th scope="col">MON-FRI (15 Days)</th>
+                  <th scope="col">
+                    Sold Out Timings - 08:30 PM to 10:30 PM (IST)
+                  </th>
+                </tr>
+                {% endcomment %}
+              </thead>
+              <tbody>
+                {% for i in time %}
+                <tr>
+                  <th scope="row">{{i.date}}</th>
+                  <td>{{i.day_duration}}</td>
+                  <td>FILLING {{i.time_duration1}}-{{i.time_duration2}}</td>
+                </tr>
+                {% endfor %} {% comment %}
+                <tr>
+                  <th scope="row">DEC 07th</th>
+                  <td>MON - FRI (15 DAYS)</td>
+                  <td>Timings - 08:30 PM to 10:30 PM (IST)</td>
+                </tr>
+                <tr>
+                  <th scope="row">JAN 02nd</th>
+                  <td>SAT & SUN (5 WEEKS) Weekend Batch</td>
+                  <td>Timings - 07:00 AM to 10:00 AM (IST)</td>
+                </tr>
+                <tr>
+                  <th scope="row">JAN 04th</th>
+                  <td>MON - FRI (15 DAYS)</td>
+                  <td>Timings - 07:00 AM to 09:00 AM (IST)</td>
+                </tr>
+                {% endcomment %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 no-padding">
+        <div class="dtlpr_infbx">
+          <p>Course Price at</p>
+          <span class="final_pr"
+            ><i class="fa fa-inr" aria-hidden="true"></i>
+            <a href="#"> {{posts.price}}</a>
+          </span>
+          <span class="cutdis_pr"
+            ><i class="fa fa-inr" aria-hidden="true"></i
+            >{{posts.old_price}}</span
+          >
+          <div class="disinf_bx">
+            <span>Discount: {{posts.discount}}%</span>
+          </div>
+          <a
+            href="{% url 'add' posts.slug %}"
+            class="btn btn-secondary mt-2 mb-2"
+            >ENROLL NOW</a
+          >
+          <div class="emi_avail_txt">
+            <span>
+              <b>No Cost EMI</b> starts at<b
+                ><i class="fa fa-inr" aria-hidden="true"></i> </b
+              >{{posts.emi_start_price}} / month <a href="#">View more</a></span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% if not videos %}
+{% else %}
+<section class="Program-Syllabus">
+  <div class="container">
+    <div
+      class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding box_heading_section mt-4"
+    >
+      <div class="box_title_bx no-padding">
+        <h2 class="title_box_heading">Videos</h2>
+      </div>
+    </div>
+    <div class="row">
+    {% for i in videos %}
+      <div class="col-md-12" style="margin-bottom:30px;">
+        <div class="box_syllabus_course clearfix">
+          <div class="top_info_sub_course">
+            <div class="row">
+              <div class="col-md-8">
+                <div class="main-mobile">
+                  <div class="pro_slyb_mobile">
+                    <h2 class="title">
+                     {{i.title}}
+                    </h2>
+                  </div>
+                  <div class="bootstrap-read-more-section">
+                    <p class="italik">
+                      {{i.desc|safe}}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="main-mobile-video">
+                  <h4>Watch Video</h4>
+                  <div class="video-radious">
+                    <iframe
+                      width="100%"
+                      height=""
+                      src="https://www.youtube.com/embed/{{i.video_id}}"
+                      frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen=""
+                      style="border-radius: 6px"
+                    ></iframe>
+                  </div>
+
+                 {% comment %} <p style="color:red;"> <i class="fa fa-video"> </i> This Video is paid </p> {% endcomment %}
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+<!------Accordion-------->
+<section class="Accordion-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="Accordion-main">
+          <div class="container mt-10">
+            <div class="col-md-12">
+              <h2 class="title_box_heading mb-4">{{posts.title}} Curriculum</h2>
+              <div
+                class="panel-group"
+                id="accordion2"
+                role="tablist"
+                aria-multiselectable="true"
+              >
+                {% for i in curriculam %}
+                <div class="panel panel-default">
+                  <div
+                    class="panel-heading"
+                    role="tab"
+                    id="{{forloop.counter}}"
+                  >
+                    <h4 class="panel-title">
+                      <a
+                        role="button"
+                        data-toggle="collapse"
+                        data-parent="#accordion2"
+                        href="#demo{{forloop.counter}}"
+                        aria-expanded="true"
+                        aria-controls="collapseOne"
+                      >
+                        {{i.title}}
+                      </a>
+                    </h4>
+                  </div>
+                  <div
+                    id="demo{{forloop.counter}}"
+                    class="panel-collapse collapse in"
+                    role="tabpanel"
+                    aria-labelledby="{{forloop.counter}}"
+                  >
+                    <div class="panel-body">
+                      <div class="mini-accordion">
+                        <p>{{i.content|safe}}</p>
+                      </div>
+                    </div>
+                  </div>
+                  {% comment %} {% endfor %} {% endcomment %} {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!----Enroll-Now------>
+
+<section class="Enroll-Now d-none d-lg-block">
+  <div class="container">
+    <div class="row">
+      <div
+        class="col-lg-12 col-md-12 col-sm-6 col-xs-6 open_frm_bx loaded"
+        style="background-image: url(images/download.jpg)"
+      >
+        <div class="title">Like the curriculum? Enroll Now</div>
+        <div class="sub">
+          Structure your learning and get a certificate to prove it.
+        </div>
+        <form>
+          <div class="row">
+            <div class="col-4">
+              <label for="formGroupExampleInput">Phone Number</label>
+              <input
+                type="Number"
+                id="Number"
+                class="form-control"
+                placeholder="Phone"
+              />
+            </div>
+            <div class="col-4">
+              <label for="formGroupExampleInput">Email</label>
+              <input
+                type="Email"
+                class="form-control"
+                id="Email"
+                placeholder="Email"
+              />
+            </div>
+            <div class="col-4 mt-2">
+              <button type="submit" class="btn btn-primary mt-4">
+                ENROLL NOW
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!------Accordion-2-------->
+
+<!---The Edureka images----->
+<section class="Edureka-images mb-5">
+  <div class="container-fluid">
+    <div class="row">
+      <img
+        src="{% static 'images/Screenshot2.png' %}"
+        class="img-fluid"
+        alt="Responsive image"
+      />
+    </div>
+  </div>
+</section>
+<!----Testimonial Reviews------>
+<section class="Reviews">
+  <div class="container">
+    <h2 class="mb-5 mt-4">Reviews</h2>
+
+    <div class="row">
+      {% for i in reviews %}
+      <div class="col-md-4">
+        <div class="main-reviews">
+          <div class="customer-pers-details">
+            <span class="ssss">{{i.user.first_name|slice:":1"}}</span>
+            <span class="Sujatha">{{i.user.first_name}}</span>
+          </div>
+          {% if i.stars == 1 %}
+          <div class="star">
+            <i class="fa fa-star" aria-hidden="true"></i>
+          </div>
+          {% elif i.stars == 2 %}
+          <div class="star">
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+          </div>
+          {% elif i.stars == 3 %}
+          <div class="star">
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+          </div>
+          {% elif i.stars == 4 %}
+          <div class="star">
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+          </div>
+          {% elif i.stars == 5 %}
+          <div class="star">
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+          </div>
+          {% endif %}
+          <div class="bootstrap-read-more-section">
+            <p class="italik">{{i.content}}</p>
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      <div class="bootstrap-read-more-section">
+        <p class="italik">No Reviews Yet</p>
+      </div>
+      {% endfor %} {% if user.is_authenticated %}
+      <div class="col-lg-12">
+        <form method="post" action=".">
+          <h2>Add a Review</h2>
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="">Stars</label>
+            <select name="stars" class="form-select">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3" selected>3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label"
+              >Review</label
+            >
+            <textarea
+              class="form-control"
+              name="content"
+              id="exampleFormControlTextarea1"
+              rows="3"
+            ></textarea>
+          </div>
+          <button class="btn btn-primary" typ="submit">Submit</button>
+        </form>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<!----Enroll-Now------>
+
+<section class="Enroll-Now d-none d-lg-block">
+  <div class="container">
+    <div class="row">
+      <div
+        class="col-lg-12 col-md-12 col-sm-6 col-xs-6 open_frm_bx loaded"
+        style="background-image: url(images/download.jpg)"
+      >
+        <div class="title">Loved reviews? Enroll Now</div>
+        <div class="sub">
+          Structure your learning and get a certificate to prove it.
+        </div>
+        <form>
+          <div class="row">
+            <div class="col-4">
+              <label for="formGroupExampleInput">Phone Number</label>
+              <input
+                type="Number"
+                id="Number"
+                class="form-control"
+                placeholder="Phone"
+              />
+            </div>
+            <div class="col-4">
+              <label for="formGroupExampleInput">Email</label>
+              <input
+                type="Email"
+                class="form-control"
+                id="Email"
+                placeholder="Email"
+              />
+            </div>
+            <div class="col-4 mt-2">
+              <button type="submit" class="btn btn-primary mt-4">
+                ENROLL NOW
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<!----Features------>
+<section class="Features">
+  <div class="container">
+    <h2 class="mb-4 mt-2">Features</h2>
+    <div class="row">
+      {% for i in features %}
+      <div class="col-md-4">
+        <div class="main-features">
+          <div class="Features-head">
+            <h4>
+              <i class="fa fa-desktop" aria-hidden="true"></i>&nbsp;
+              <span> {{i.title|safe}}</span>
+            </h4>
+          </div>
+          <div class="Features-head">
+            <article>{{i.content|safe}}</article>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!------Accordion-2-------->
+<section class="Accordion-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="Accordion-main">
+          <div class="container mt-10">
+            <div class="col-md-12">
+              <h2 class="title_box_heading mb-4">{{posts.title}} FAQ</h2>
+              <div
+                class="panel-group"
+                id="accordion2"
+                role="tablist"
+                aria-multiselectable="true"
+              >
+                {% for i in faqs %}
+                <div class="panel panel-default">
+                  <div
+                    class="panel-heading"
+                    role="tab"
+                    id="{{forloop.counter}}"
+                  >
+                    <h4 class="panel-title">
+                      <a
+                        role="button"
+                        data-toggle="collapse"
+                        data-parent="#accordion2"
+                        href="#demo{{forloop.counter}}"
+                        aria-expanded="true"
+                        aria-controls="collapseOne"
+                      >
+                        {{i.title}}
+                      </a>
+                    </h4>
+                  </div>
+                  <div
+                    id="demo{{forloop.counter}}"
+                    class="panel-collapse collapse in"
+                    role="tabpanel"
+                    aria-labelledby="{{forloop.counter}}"
+                  >
+                    <div class="panel-body">
+                      <div class="mini-accordion">
+                        <p>{{i.content|safe}}</p>
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!----Enroll-Now------>
+
+<section class="Enroll-Now d-none d-lg-block">
+  <div class="container">
+    <div class="row">
+      <div
+        class="col-lg-12 col-md-12 col-sm-6 col-xs-6 open_frm_bx loaded"
+        style="background-image: url(images/download.jpg)"
+      >
+        <div class="title">Loved reviews? Enroll Now</div>
+        <div class="sub">
+          Structure your learning and get a certificate to prove it.
+        </div>
+        <form>
+          <div class="row">
+            <div class="col-4">
+              <label for="formGroupExampleInput">Phone Number</label>
+              <input
+                type="Number"
+                id="Number"
+                class="form-control"
+                placeholder="Phone"
+              />
+            </div>
+            <div class="col-4">
+              <label for="formGroupExampleInput">Email</label>
+              <input
+                type="Email"
+                class="form-control"
+                id="Email"
+                placeholder="Email"
+              />
+            </div>
+            <div class="col-4 mt-2">
+              <button type="submit" class="btn btn-primary mt-4">
+                ENROLL NOW
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock body %}

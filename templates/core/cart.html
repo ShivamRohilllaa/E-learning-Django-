@@ -1,0 +1,51 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block body %}
+<!------ AWS Architect Certification Training-------->
+<section class="Certification">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">No.</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in carts %}
+                            <tr>
+                                <th scope="row">{{forloop.counter}})</th>
+                                <td>{{i.item.title}}</td>
+                                <td>Rs. {{i.item.price}}</td>
+                                <td><a href="{% url 'removecart' i.item.id %}"><i class="fa fa-window-close" aria-hidden="true"></i></a></td>
+                            </tr>
+                        {% endfor %}    
+                            <tr>
+                                <th scope="row"><b> Total Price: </b></th>
+                                <th scope="row"></th>
+                                <th scope="row"></th>
+                                <th scope="row"><b>Rs. {{ order.get_totals | floatformat:2 }}</b></th>
+                            </tr>
+                            {% comment %} <tr>
+                                {% for i in orders %}
+                                <th scope="row"><i class="fa fa-tag"></i> Coupon Applied <br> Rs. {{i.coupon.amount|floatformat}} OFF<b></b></th>
+                                {% endfor %}
+                            </tr> {% endcomment %}
+                        </tbody>
+                        <tfoot>
+                        <p></p>
+                        </tfoot>
+                    </table>
+                    <a href="{% url 'checkout' %}"  class="btn btn-primary float-right mt-5 mb-5"> Checkout </a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock body %}

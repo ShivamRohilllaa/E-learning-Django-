@@ -1,0 +1,44 @@
+{% extends 'webadmin/base.html' %}
+{% load static %}
+{% block title %}
+Edit Sub Categories
+{% endblock title %}
+{% block body %}
+{% load crispy_forms_tags %}
+<div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="header-title">Edit Sub Categories</h4>
+                                        <ul class="nav nav-tabs nav-bordered mb-3">
+                                            <li class="nav-item">
+                                                <a href="#typeahead-preview" data-toggle="tab" aria-expanded="false" class="nav-link active">
+                                                    Edit
+                                                </a>
+                                            </li>
+                                        </ul> <!-- end nav-->
+                                        <div class="tab-content">
+                                            <div class="tab-pane show active" id="typeahead-preview">
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <div class="form-group mb-3">
+                                                        <form method="post" enctype="multipart/form-data">
+                                                        {% csrf_token %}
+                                                        {{subcat.media}}
+              {{subcat|crispy}}
+              <button class="btn btn-primary" value="submit" type="submit" style="margin-top:20px;">Add</button>
+              </form>
+                                                        </div>
+                                                    </div> <!-- end col -->
+                                                </div>
+                                                <!-- end row -->
+                                                <!-- end row -->                      
+                                            </div> <!-- end preview-->
+                                    
+                                        </div> <!-- end tab-content-->
+
+                                    </div> <!-- end card-body -->
+                                </div> <!-- end card-->
+                            </div> <!-- end col -->
+                        </div>
+{% endblock body %}

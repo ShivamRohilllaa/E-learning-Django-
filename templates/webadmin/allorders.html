@@ -1,0 +1,69 @@
+{% extends 'webadmin/base.html' %}
+{% load static %}
+{% block title %}All Orders
+{% endblock title %}
+{% block body %}
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <div class="card">
+                                    <div class="card-body">
+
+                                        <h4 class="header-title">All Orders</h4>
+                                        <div class="tab-content">
+                                            <div class="tab-pane show active" id="striped-rows-preview">
+                                                <div class="table-responsive-sm">
+                                                    <table class="table table-striped table-centered mb-0">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Course</th>
+                                                                <th>User</th>
+                                                                {% comment %} <th>Shipping Address</th> {% endcomment %}
+                                                                <th>Email</th>
+                                                                <th>Phone</th>
+                                                                {% comment %} <th>Payment Method</th> {% endcomment %}
+                                                                <th>Paid Amount</th>
+                                                                <th>Date</th>
+                                                                <th>Certificate</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            {% for i in orders %}
+                                                            {% for obj in i.orderitems.all %}
+                                                            <tr>
+                                                                <td class="table-user">
+                                                                                                
+                                                                    {{obj}}
+                                                                    
+                                                                </td>
+                                                                <td>
+                                                                {% comment %} <a href="{% url 'userdetails' i.id %}"> {% endcomment %}
+                                                                 {{i.user.first_name}} {{i.user.last_name}} 
+                                                                 {% comment %} </a> {% endcomment %}
+                                                                 </td>
+                                                                <td>{{i.user.email}}</td>
+                                                                <td>{{i.user.customer.mobile}}</td>
+                                                                <td>Rs. {{i.total}}</td>
+                                                                <td>{{i.created|date}}</td>
+                                                                <td>
+                                                                <a href="{% url 'appprove_cert' obj.id %}">
+                                                                {{obj.certificate}}
+                                                                </a>
+                                                                </td>
+                                                            </tr>
+                                                            {% endfor %}
+                                                            {% endfor %}
+                                                            {% comment %} {% endfor %} {% endcomment %}
+                                                        </tbody>
+                                                    </table>
+                                                </div> <!-- end table-responsive-->                     
+                                            </div> <!-- end preview-->
+                                        
+                                        </div> <!-- end tab-content-->
+
+                                    </div> <!-- end card body-->
+                                </div> <!-- end card -->
+                            </div><!-- end col-->
+                        </div>
+
+
+{% endblock body %}

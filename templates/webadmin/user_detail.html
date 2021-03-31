@@ -1,0 +1,78 @@
+{% extends 'webadmin/base.html' %}
+{% load static %}
+{% block title %}
+Edit User Data
+{% endblock title %}
+{% block body %}
+{% load crispy_forms_tags %}
+<div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="header-title">Edit User Data</h4>
+                                        <ul class="nav nav-tabs nav-bordered mb-3">
+                                            <li class="nav-item">
+                                                <a href="#typeahead-preview" data-toggle="tab" aria-expanded="false" class="nav-link active">
+                                                    Edit
+                                                </a>
+                                            </li>
+                                        </ul> <!-- end nav-->
+                                        <div class="tab-content">
+                                            <div class="tab-pane show active" id="typeahead-preview">
+                                                <div class="row">
+                                                    {% comment %} <div class="col-lg-12">
+                                                        <div class="form-group mb-3">
+                                                        <form method="post" enctype="multipart/form-data">
+                                                        {% csrf_token %}
+                                                        {{editpost.media}}
+                                                        {{editpost|crispy}}
+                                                        <button class="btn btn-primary" value="submit" type="submit">Update</button>
+                                                        </form>
+                                                        </div>
+                                                    </div> <!-- end col --> {% endcomment %}
+                                                    <div class="col-lg-12">
+                                                        <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Mobile</th>
+      <th scope="col">Email</th>
+      <th scope="col">Address</th>
+      <th scope="col">City</th>
+      <th scope="col">State</th>
+      <th scope="col">Zip_Code</th>
+      <th scope="col">Company</th>
+      <th scope="col">Telephone</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+      {% if customer.profile_pic %}
+      <img src="{{customer.profile_pic.url}}" width="50" height="50" alt="table-user" class="mr-2 rounded-circle">
+      {% endif %}
+      {{customer.user.first_name}} {{customer.user.last_name}}</td>
+      <td>{{customer.mobile}}</td>
+      <td>{{customer.user.email}}</td>
+      <td>{{customer.address}}</td>
+      <td>{{customer.City}}</td>
+      <td>{{customer.State}}</td>
+      <td>{{customer.Zip_code}}</td>
+      <td>{{customer.Company}}</td>
+      <td>{{customer.Telephone}}</td>
+    </tr>
+  </tbody>
+</table>
+                                                    </div> <!-- end col -->
+                                                </div>
+                                                <!-- end row -->
+                                                <!-- end row -->                      
+                                            </div> <!-- end preview-->
+                                    
+                                        </div> <!-- end tab-content-->
+
+                                    </div> <!-- end card-body -->
+                                </div> <!-- end card-->
+                            </div> <!-- end col -->
+                        </div>
+{% endblock body %}

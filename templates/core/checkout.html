@@ -1,0 +1,118 @@
+{% extends 'core/base.html' %}
+{% block title %}Checkout
+{% endblock title %}
+{% block body %}
+{% load static %}
+{% load crispy_forms_tags %}
+    <!------ AWS Architect Certification Training-------->
+    <section class="Certification">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12 no-padding">
+                    <div class="Certification-2">
+                        <ul class="brdcrm-2 hidden-xs">
+                            <li><a href="#">Home></a></li>
+                            <li><a href="#">Checkout</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12 no-padding hidden-xs hidden-sm cc_cursor">
+                    <div class="cnt_box">
+                        <span class="iconcall">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                        </span>
+                        <div class="cnt_info">
+                            <span class="text">Have Queries? Ask us</span>
+                            <a href="#">08040423753</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!---cheak-out-page---->
+    <section class="cheak-out-page mt-5 mb-5">
+        <div class="container">
+            <h4 class="pb-2">Checkout</h4>
+            <div class="row">
+                {% comment %} <div class="col-lg-8">
+                    <div class="main-chekout">
+                        <form>
+                            {% csrf_token %}
+                            {{form|crispy}}
+                            <button type="button" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div> {% endcomment %}
+                <div class="col-lg-8 mx-auto">
+                    <div class="main-chekout">
+                        <h4 class="pb-2">Order Summary</h4>
+                        {% if orderss is not None %}
+                        {% comment %} <h4 class="pb-2">{{orderss}}</h4>
+                        <h4 class="pb-2">{{order_payment}}</h4> {% endcomment %}
+                        {% endif %}
+
+                        <div class="summery mt-2">
+                            {% for i in orders %}
+                            {% for obj in i.orderitems.all %}
+                            <p> {{forloop.counter}}) <b>{{obj.item.title|title}}</b> <span class="price" style="color:green;"> <b> Rs. {{obj.item.price}} </b> </span>
+                            </p>                            
+                            {% comment %} {% endfor %}
+                            {% endfor %}
+                            <hr> {% endcomment %}
+                            {% comment %} {% for i in orders %} {% endcomment %}
+                            {% if i.coupon %}
+                            <p><i class="fa fa-tag"></i> <b> {{i.coupon.code}} </b> Coupon Applied <br> Rs. {{i.coupon.amount|floatformat}} OFF<b></b></p>
+                            <p>Total Amount:-<span class="price2" style="color:red;"><del> <b> Rs. {{ order.get_totals|add:i.coupon.amount| floatformat:2 }} </b></del></span></p>
+                            <p>Payable Amount:- <span class="price2" style="color:green;"><b>Rs. {{ order.get_totals | floatformat:2 }}</b></span></p>
+                            {% else %}
+                            <p>Payable Amount:- <span class="price2" style="color:green;"><b>Rs. {{ order.get_totals | floatformat:2 }}</b></span></p>
+
+                            <form class="form-inline mt-4" method='post' action='{% url 'add_coupon' %}'>
+                            {% csrf_token %}
+                                {{couponform.code}}
+                               &nbsp;  <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                            {% endif %}
+                            {% endfor %}
+                            {% endfor %}
+                            <br>
+                            <div class="mx-auto">
+                                <a href="?action=create_payment" type="submit" style="color:#fff; font-weight:600;" class="btn btn-primary">Continue To Payment</a>
+                            </div>                                 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% if orderss is not None %}
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+ <script>
+ var options = 
+ {    
+ "key": "rzp_test_CdqHewXL5K1AYq", 
+ "name": "Edureka",
+ {% for i in orders %}
+ {% for obj in i.orderitems.all %}    
+ "description": "Payment For {{obj.item.title|title}}",    
+ {% endfor %}
+ {% endfor %}
+ "image": "{% static 'images/logo.png' %}",    
+ "order_id": "{{orderss.id}}",
+ "callback_url": "http://127.0.0.1:3000/verify_payment/",
+ "prefill": { "name": "{{request.user.first_name}} {{request.user.last_name}}",
+ "email": "{{request.user.username}}",        
+ "contact": "{{request.user.mobile}}"    
+    },      
+    "theme": {        
+        "color": "#3399cc"    
+        }
+        };
+var rzp1 = new Razorpay(options);
+rzp1.open();   
+</script>
+
+{% endif %}
+ 
+{% endblock body %} 

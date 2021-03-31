@@ -1,0 +1,17 @@
+{% load static %}
+    <section class="sidebar-section">
+      <div class="container"> 
+        <div class="w3-sidebar w3-bar-block w3-dark-grey w3-animate-left" style="display:none" id="mySidebar">
+  <button class="w3-bar-item w3-button w3-large"
+  onclick="w3_close()"><i class="fa fa-bars" aria-hidden="true"></i></button>
+  <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;&nbsp;{{request.user.first_name}} {{request.user.last_name}}</a>
+  <a href="{% url 'userhome' %}" class="w3-bar-item w3-button"><i class="fa fa-sitemap" aria-hidden="true"></i>&nbsp;&nbsp;Dashboard</a>
+  <a href="{% url 'logout' %}" class="w3-bar-item w3-button"><i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;Sign out</a>
+
+</div>
+<div>
+  <button class="w3-button w3-white w3-xxlarge" onclick="w3_open()"><i class="fa fa-angle-double-right"></i></button>
+</div>  
+
+       </div>
+    </section>

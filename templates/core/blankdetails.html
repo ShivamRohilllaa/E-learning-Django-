@@ -1,0 +1,68 @@
+{% extends 'core/base.html' %}
+{% block title %} {{blank.title}}
+{% endblock title %}
+{% load static %}
+{% block body %}
+<section class="Recent-Addition pb-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-10 mt-4 mx-auto">
+            <a href="" style="color: black">
+              <div class="main-hover-div">
+                <div class="user-profile-2">
+                  <div class="test" style="margin: 10px">
+                    <h2 class="text-left">
+                      {{blank.title}}
+                    </h2>
+                <span class="Last"><i class="fa fa-clock"> </i> {{blank.date|date}}</span>
+                  </div>
+                  <div class="user-images">
+                    <div class="program_features_info">
+                      <span
+                        ><img
+                          src="{% static 'images/user.png' %}"
+                          style="padding-right: 10px"
+                      /></span>
+                      <span>{{blank.author|capfirst}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-10 mx-auto">
+            <a href="#" style="color: black">
+              <div class="main-hover-div">
+                <div class="user-profile-2 det">
+                  <p style="padding: 10px; margin: 10px " >
+                    {{blank.desc|safe}}
+                  </p>
+                  <div id="accordion" style="margin-top:50px;">
+                                {% for i in tc %}
+                                <div class="card">
+                                    <div class="card-header" id="headingOne">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link" data-toggle="collapse"
+                                                data-target="#{{i.title}}" aria-expanded="true"
+                                                aria-controls="collapseOne">
+                                                {{i.title}}
+                                            </button>
+                                        </h5>
+                                    </div>
+                                    <div id="{{i.title}}" class="collapse show" aria-labelledby="headingOne"
+                                        data-parent="#accordion">
+                                        <div class="card-body">
+                                            {{i.content|safe}}
+                                        </div>
+                                    </div>
+                                </div>
+                              {% endfor %}
+                            </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock body %}

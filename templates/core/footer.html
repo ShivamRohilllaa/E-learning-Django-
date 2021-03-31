@@ -1,0 +1,219 @@
+{% load static %}  
+  <!----footer-section------>
+    <section class="footer-section">
+        <div class="container">
+            <h2 class="mt-4 mb-4">edureka!</h2>
+            <div class="row">
+                    {% for i in footcategories%}
+                <div class="col-md-3">
+                    <div class="footer-text">
+                         {% if i.children.all %}
+                        <h3>{{i.title}} </h3>
+                        <ul class="trend_list">
+                            {% for subcat in i.children.all %}                            
+                            <li>
+                                <a href="#">
+                         {{subcat.title}}
+                       </a>
+                            </li>
+                            {% endfor %}
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+                    {% endfor %}
+                <div class="col-md-3">
+                    <div class="footer-text">
+                        <h3>Company</h3>
+                        <ul class="trend_list">
+                            <li>
+                                <a href="#">
+                        About us
+                       </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                       News & Media
+                       </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                        Reviews
+                       </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                        Contact us
+                       </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                        Webinars
+                       </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                       Blog
+                       </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                        Community
+                       </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                        Locations
+                       </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                       Sitemap
+                       </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                       Blog Sitemap
+                       </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                       Community Sitemap
+                       </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                      City Sitemap
+                       </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                      Corporate Training
+                       </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="footer-text">
+                        <h3>Work with us </h3>
+                        <ul class="trend_list">
+                            <li>
+                                <a href="#">
+                        Careers
+                       </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                        ABecome an Instructor
+                       </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                       Become an Affiliate
+                       </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                        Become a Partner
+                       </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                         Hire from Edureka
+                       </a>
+                            </li>
+                        </ul>
+                        <div class="Download-App">
+                            <h3>Download App</h3>
+                            <a href="#">
+                                <img src="images/d1.png">
+                            </a>
+                            <a href="#">
+                                <img src="images/d2.png">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="CATEGORIES pt-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel-body">
+                        <h3 class="hidden-xs">Categories</h3>
+                        <ul class="trend_cat_list">
+                        {% for i in allcat %}
+                            <li>
+                                <a href="#">{{i.title}}</a>
+                            </li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="col-md-12">
+                    <div class="panel-body">
+                        <h3 class="hidden-xs">Disclaimer</h3>
+                        {% for i in disc_cat %}
+                        <ul class="trend_cat_list disc">
+                            <li>
+                                <a href="#">{{i.title}}</a>
+                            </li>
+                        </ul>
+                        {% endfor %} 
+                        {% for i in disc_blog %}
+                        <ul class="trend_cat_list disc">    
+                            <li>
+                                <a href="#">{{i.title}}</a>
+                            </li>
+                        </ul>    
+                        {% endfor %}
+                        {% for i in disc_post %}
+                        <ul class="trend_cat_list disc">
+                            <li>
+                                <a href="#">{{i.title}}</a>
+                            </li>
+                        </ul>    
+                        {% endfor %}
+                    </div>
+                </div>
+                    <div class="tncblock">
+                        <span class="brain4ce">© 2020 Developed By Inet. All rights Reserved.</span>
+                        <a href="#">Terms & Conditions</a>
+                        <a href="#">Legal & Privacy</a>
+                        <ul class="list-unstyled footer-social-icon">
+                            <li>
+                                <a href="#">
+                                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fab fa-linkedin" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="fab fa-youtube" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </section>
+    <section class="copy-right text-center mt-4 mb-4">
+        <div class="container">
+            <span>PHJY Inet Software PVT. LTD </span>
+        </div>
+
+    </section>

@@ -1,0 +1,82 @@
+{% extends 'core/base.html' %}
+{% block title %}Courses
+{% endblock title %}
+{% load static %}
+{% block body %}
+    <!---Blog---->
+    <section class="chhota-div">
+      <div class="container-fluid">
+        <div class="container text-center">
+          <h2 class="mt-5 mb-4">
+            All Courses
+          </h2>
+        </div>
+      </div>
+    </section>
+    <!-----Recent Additions--- -->
+<section class="Program-Couses-main">
+    <div class="container">
+      <div class="box_syllabus_course clearfix">
+        <div class="top_info_sub_course">
+          <div class="row">
+            {% for i in main_course %}
+            <h2> {{i.title}} </h2>
+            {% for obj in i.posts.all %} 
+            <div class="col-lg-12">
+            <div class="boxes">
+            <div class="row">
+
+            <div class="col-lg-4">
+              <div class="Program-Couses-main-images">
+                <img src="{{obj.image.url}}" width="300" alt="{{obj.image_alt_name}}">
+              </div>
+            </div>
+            <div class="col-lg-8">
+              <div class="main-class-text">
+                <div class="user-data">
+                  <h3>{{obj.title}}</h3>
+                </div>
+                <div class="">
+                  <ul>
+                    {{obj.desc|truncatechars:150|safe}}
+                  </ul>
+                  <a class="btn btn-primary" href="{% url 'details' obj.category.slug obj.slug %}" role="button">Read More</a>
+                </div>
+              </div>
+            </div>
+
+            </div>            
+            </div>            
+            </div>            
+            {% endfor %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% comment %} <section class="Career mt-4 mb-4">
+        <div class="container">
+            <div class="row">
+                {% for i in main_course %}
+                <h2 class="mb-4">{{i.title}}</h2>
+                {% for obj in i.posts.all %}
+                <div class="col-md-3 mt-4">
+                    <a href="{% url 'details' obj.category.slug obj.slug %}" style="color: black;">
+                        <div class="main-hover-div">
+                            <div class="box-main">
+                                <div class="">
+                                    <img src="{{obj.image.url}}" alt="{{obj.image_alt_name}}" style="width:255px; height:150px;">
+                                </div>
+                                <div class="main-career-2">
+                                    <h3>{{obj.title}}</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %} {% endfor %}
+            </div>
+</section> {% endcomment %}
+
+{% endblock body %}

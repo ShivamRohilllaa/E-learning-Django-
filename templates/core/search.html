@@ -1,0 +1,62 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Search
+{% endblock title %}
+{% block body %}
+    <!----Trending Courses---->
+    <section class="filter-starts">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 my-2">
+                    <h4 class="mt-4">Results</h4>
+                    {% if totalposts|length < 1 %}
+                    <p>No Result Found !!</p>
+                    Your Search - <b>{{search}} - did not match any documents.</b>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="portfolio-item row">
+            {% for i  in totalposts %}
+                <div class="item col-lg-3 col-md-4 mt-4">
+                    <a href="{% url 'details' i.category.slug i.slug %}" style="color: black;">
+                        <div class="main-hover-div">
+                            <div class="user-profile-2">
+                                <div class="">
+                                  <img src="{{i.image.url}}" alt="" style="width:255px; height:130px;">
+                                </div>
+                                <div class="user-main">
+                                    <div class="user-data">
+                                        <h3>{{i.title}}</h3>
+                                    </div>
+                                    <div class="star">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <span>4.4 (5500)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hover_display">
+                                <span class="batchtxt">Next batch</span>
+                                <span class="nextbatch">
+                 <span class="value">Today</span>
+                                <span class="text">- 7th December</span>
+                                </span>
+                                <span class="learnlist">What will I learn?</span>
+                                <ul>
+                                    <li>Introduction to AWS</li>
+                                    <li>Security Management in AWS</li>
+                                    <li>Object Storage Options</li>
+                                </ul>
+                                <span class="seemorebtn">View Details</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}    
+            </div>
+        </div>
+    </section>
+{% endblock body %}

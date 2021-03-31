@@ -1,0 +1,203 @@
+{% load static %}
+    <div class="accordeon-sec1 col-lg-12">
+        <div class="wrapper">
+            <div class="accordion">
+                <div class="accordion-item">
+                <div class="container">
+                    <div class="accordion-item__content">
+                    <div class="row">
+                    {% for i in off %}
+                    <div class="col-lg-3 text-center">
+                    <span class="badge bg-success">{{i.off}}</span>
+                        <h1>{{i.title}}</h1>
+                        <small>{{i.subtitle}}</small>
+                        <p>Rs. {{i.price}} </p>
+                        <small>{{i.desc}} </small> <br>
+                       <br> <a type="button" href="{{i.url}}" class="btn btn-primary">{{i.button_text}}</a> <br>
+                        <small>{{i.small_desc}} </small>
+                    </div>
+                    {% endfor %}
+                    </div>
+                    </div>
+                </div>
+                    <div class="accordion-item__trigger">
+                        Latest Offers. Hurry offers end soon! <span> Click Here </span> <i class="fa fa-chevron-down"> </i>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <section class="navbar-statrs pt-3 pb-4">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'images/logo.png' %}" alt=""></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+               </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+                <form class="input-group mt-2" method='get' action='{% url 'search' %}'>
+                <input type="search" name="search" id="search"  class="form-control" placeholder="Enter Course, Category or keyword" maxlength="255">
+                <div class="input-group-append">
+                <button class="btn btn-success" type="submit">
+                <span class="fa fa-search form-control-feedback"></span>
+                </button>
+                </form>
+                    </div>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                            <a class="nav-link" href="{% url 'courses' %}">Courses</a>
+                        </li>
+                        <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                            <a class="nav-link" href="{% url 'blogs' %}">Blog</a>
+                        </li>
+                        {% if user.is_authenticated %}
+                        <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                            <a class="nav-link" href="{% url 'userhome' %}">{{user.first_name}}</a>
+                        </li>
+                        <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                            <a class="nav-link" href="{% url 'cart' %}"><i class="fa fa-shopping-cart" aria-hidden="true"></i> {{totalcarts|length}}</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                            <a class="nav-link" href="{% url 'userlogin' %}">Log In</a>
+                        </li>
+                        <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                            <a class="nav-link" href="{% url 'usersignup' %}">Sign Up</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </section>
+
+    <section class="second-navbar">
+        <div class="container">
+        <div class="row">
+        <div class="col-lg-10">
+            <nav class="navbar navbar-light navbar-expand-lg mainmenu">
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                      <ul class="navbar-nav mr-auto">
+                          <li class="dropdown">
+                              <a class="dropdown-toggle dropmain" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Browse Categories</a>
+                              <ul class="dropdown-menu exdrop drop1" aria-labelledby="navbarDropdown">
+                                {% for i in catg_parent %} 
+                                <li class="dropdown show"> 
+                                {% if i.children.all %}
+                                <a class="" href="{% url 'allcatpost' i.slug %}" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{i.title|title}} 
+                                {% comment %} <i class="fa fa-angle-right" aria-hidden="true"></i> {% endcomment %}
+                                </a>
+                                {% else %} 
+                                {% endif %} 
+                                <ul class="dropdown-menu drop-6 exdrop2 drop2" aria-labelledby="navbarDropdown1">
+                                {% for obj in i.children.all %}
+                                {% if more == 'True' %}
+                                {% else %}
+                                {% endif %}
+                                <li class="dropdown show"> <a class="" href="{% url 'subcat' obj.slug %}" id="navbarDropdown2"
+                            data-toggle="" aria-haspopup="true" aria-expanded="false"> {{obj.title}} 
+                            {% comment %} <i class="fa fa-angle-right" aria-hidden="true"></i> {% endcomment %}
+                            </a>
+                          <ul class="dropdown-menu drop3" aria-labelledby="navbarDropdown2">
+                            {% comment %} <li><a href="{% url 'allcatpost' i.slug %}"><img src="" width="50" height="50"></a></li> {% endcomment %}
+                            <div class="masterbox hidden-xs">
+                              <div class="title-section">
+                                <hr>
+                                <span class="coursetype">{{i.title}}</span>
+                              </div>
+                              <div class="images-text drop4">
+                              {% if not obj.logo %}
+                              <a href="{% url 'allcatpost' obj.slug %}">
+                                <span>
+                                  <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                                </span>
+                                <span style="padding-left:25px; font-weight:600;">
+                                  {{obj.title}}
+                                </span>
+                                </a>
+                            {% else %}
+                              <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                                <ol class="carousel-indicators">
+                                  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                </ol>
+                                <div class="carousel-inner">
+                                  <div class="carousel-item active">
+                                   <a href="{% url 'allcatpost' obj.slug %}"> <img class="d-block w-100" src="{{obj.logo.url}}"> </a>
+                                  </div>
+                                  {% if not obj.logo1 %}
+                                  {% else %}
+                                  <div class="carousel-item">
+                                  <a href="{% url 'allcatpost' obj.slug %}">  <img class="d-block w-100" src="{{obj.logo1.url}}"></a>
+                                  </div>
+                                  {% endif %}
+                                  {% if not obj.logo2 %}
+                                  {% else %}
+                                  <div class="carousel-item">
+                                  <a href="{% url 'allcatpost' obj.slug %}">  <img class="d-block w-100" src="{{obj.logo2.url}}"></a>
+                                  </div>
+                                  {% endif %}
+                                </div>
+                              </div>
+                              {% endif %}
+                              </div>                          
+                             </div>
+                            </a> 
+                          {% comment %} {% endif %}   {% endcomment %}
+                          </ul>
+                        </li>
+                                {% endfor %}                                 
+                                </ul>
+                              </li>
+                              {% endfor %}                             
+                              </ul>
+                          </li>
+                          {% for i in categoriess %}
+                          {% if not i.children.all %}
+                          <li><a href="{% url 'allcatpost' i.slug %}">{{i.title}}</a></li>
+                          {% endif %}
+                          {% endfor %}
+                                 {% comment %} <li class="dropdown" style="position:absolute; right:-100px;">
+                              <a class="" href="#" id="navbarDropdown" role="button" data-toggle="" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bars" aria-hidden="true"></i></a>
+                              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            {% for i in more %} 
+                              <li class="dropdown"> {% endcomment %}
+                                {% comment %} <a href="{% url 'allcatpost' i.slug %}" >{{i.title|title}}</a>  {% endcomment %}
+                                {% comment %} <a href="{% url 'subcat' i.slug %}" >{{i.title|title}}</a> 
+                              </li>
+                            {% endfor %}                             
+                              </ul>
+                          </li>                      {% endcomment %}
+                      </ul> 
+                  </div>    
+            </nav>
+        </div>
+        <div class="col-lg-2 col-md-6 col-6 mt-2 ml-auto">
+            <div class="side-menu-section">
+              <div class="dropdown dropleft">
+                <a class="" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-bars" aria-hidden="true"></i>
+                </a>
+                <div class="dropdown-menu dropend" aria-labelledby="dropdownMenuLink">
+                  <ul class="navbar-nav">
+                  {% for i in more %}<a href="{% url 'subcat' i.slug %}" ><li class="main-class">{{i.title|title}} 
+                  </li></a>
+                  {% endfor %}
+                  </ul>
+                </div>
+              </div>
+            </div>
+        </div>                                  
+        </div>            
+        </div>            
+    </section>
+      {% if messages %}
+<div class="alert alert-success alert-dismissible">
+  {% for message in messages %}
+    <p>{{ message }}</p>
+  {% endfor %}
+</div>
+{% endif %}

@@ -1,0 +1,47 @@
+{% extends 'core/base.html' %}
+{% block title %} {{blogs.title}}
+{% endblock title %}
+{% load static %}
+{% block body %}
+<section class="Recent-Addition pb-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-10 mt-4 mx-auto">
+            <a href="" style="color: black">
+              <div class="main-hover-div">
+                <div class="user-profile-2">
+                  <div class="test" style="margin: 10px">
+                    <h2 class="text-left">
+                      {{blogs.title}}
+                    </h2>
+                <span class="Last"><i class="fa fa-clock"> </i> {{blogs.date|date}}</span>
+                  </div>
+                  <div class="user-images">
+                    <div class="program_features_info">
+                      <span
+                        ><img
+                          src="{% static 'images/user.png' %}"
+                          style="padding-right: 10px"
+                      /></span>
+                      <span>{{blogs.author|capfirst}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-lg-10 mt-4 mx-auto">
+            <a href="#" style="color: black">
+              <div class="main-hover-div">
+                <div class="user-profile-2 det">
+                  <p style="padding: 10px; margin: 10px " >
+                    {{blogs.desc|safe}}
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock body %}

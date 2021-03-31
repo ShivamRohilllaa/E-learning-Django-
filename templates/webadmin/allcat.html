@@ -1,0 +1,112 @@
+{% extends 'webadmin/base.html' %}
+{% load static %}
+{% block title %}All Category
+{% endblock title %}
+{% block body %}
+<div class="row">
+                            <div class="col-xl-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="header-title">All Categories</h4>
+                                        <div class="tab-content">
+                                            <div class="tab-pane show active" id="striped-rows-preview">
+                                                <div class="table-responsive-sm">
+                                                    <table class="table table-striped table-centered mb-0">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Index Rank</th>
+                                                                <th>Parent Category</th>
+                                                                <th>Sub Category</th>
+                                                            </tr>
+                                                        </thead>
+                                                       <h3> Categories and Their Subcategories </h3>    
+                                                       <tbody>
+                                                       {% for i in cat %}
+                                                       <tr>
+                                                       {% if i.children.all %}
+                                                       <td>
+                                                       {{i.hit}}
+                                                       </td>
+                                                       <td>
+                                                      <b> {{i.title|title}} </b>   <a href="{% url 'editcat' i.id %}" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
+                                                                    <a href="{% url 'deletecat' i.id %}" class="action-icon"> <i class="mdi mdi-delete"></i></a> 
+                                                       </td>
+                                                        {% for obj in i.children.all %}
+                                                        <td>
+                                                       {{obj.title|title}}   <a href="{% url 'editcat' obj.id %}" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
+                                                                    <a href="{% url 'deletecat' obj.id %}" class="action-icon"> <i class="mdi mdi-delete"></i></a>  
+                                                       </td>
+                                                        {% endfor %}
+                                                        {% else %}
+                                                       {% endif %}
+                                                       </tr>
+                                                       {% endfor %}
+                                                       <br> 
+                                                       {% for i in cat %}
+                                                       <tr>
+                                                       {% if not i.children.all %}
+                                                       <td>
+                                                       {{i.hit}}
+                                                      <b> {{i.title}} </b> <a href="{% url 'editcat' i.id %}" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
+                                                                    <a href="{% url 'deletecat' i.id %}" class="action-icon"> <i class="mdi mdi-delete"></i></a> 
+                                                       </td>
+                                                       {% endif %}
+                                                       </tr>
+                                                       {% endfor %}
+
+
+                                                        {% comment %} {% for i in cat %}
+                                                        {% if i.children.all %}
+                                                        <ul> <b> {{i.title|title}} </b> <a href="{% url 'editcat' i.id %}" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
+                                                                    <a href="{% url 'deletecat' i.id %}" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                                                       {% for obj in i.children.all %}
+                                                        <li>  {{obj.title|title}} <a href="{% url 'editcat' obj.id %}" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
+                                                                    <a href="{% url 'deletecat' obj.id %}" class="action-icon"> <i class="mdi mdi-delete"></i></a></li>
+                                                       {% endfor %}
+                                                        </ul>
+                                                        {% endif %}
+                                                        {% endfor %}
+                                                        {% for i in cat %}
+                                                        {% if not i.children.all %}
+                                                        <li> <b>Parent </b> <br>
+                                                        {{i.title}} <a href="{% url 'editcat' i.id %}" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
+                                                                    <a href="{% url 'deletecat' i.id %}" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                                                        </li>
+                                                        {% endif %}
+                                                        {% endfor %} {% endcomment %}
+                                                        </tbody>
+                                                        
+                                                        {% comment %} <tbody>
+                                                            {% for i in cat %}
+                                                            <tr>
+                                                            {% if i.children.all %}
+                                                                <td class="table-user">
+                                                                {{i.title|title}}
+                                                                </td>
+                                                            {% endif %}
+                                                            {% for obj in i.children.all %}
+                                                                <td class="table-user">
+                                                              <a href="{% url 'editcat' i.id %}">  {{i.parent.title}} </a> -> br <a href="{% url 'editcat' i.id %}"> {{obj.title|title}} </a>
+                                                                </td>
+                                                            {% endfor %}      {% endcomment %}
+                                                                {% comment %} <td class="table-user">
+                                                                    {{i.hit}}
+                                                                </td> {% endcomment %}
+                                                                {% comment %} <td class="table-action">
+                                                                    <a href="{% url 'editcat' i.id %}" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
+                                                                    <a href="{% url 'deletecat' i.id %}" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                                                                </td> {% endcomment %}
+                                                            {% comment %} </tr>
+                                                            {% endfor %}
+                                                        </tbody> {% endcomment %}
+                                                    </table>
+                                                </div> <!-- end table-responsive-->                     
+                                            </div> <!-- end preview-->
+                                        
+                                        </div> <!-- end tab-content-->
+
+                                    </div> <!-- end card body-->
+                                </div> <!-- end card -->
+                            </div><!-- end col-->
+                        </div>
+{% endblock body %}

@@ -1,0 +1,45 @@
+{% extends 'webadmin/base.html' %}
+{% load static %}
+{% block title %}All Sub Categories
+{% endblock title %}
+{% block body %}
+<div class="row">
+                            <div class="col-xl-6">
+                                <div class="card">
+                                    <div class="card-body">
+
+                                        <h4 class="header-title">All Sub Categories</h4>
+                                        <div class="tab-content">
+                                            <div class="tab-pane show active" id="striped-rows-preview">
+                                                <div class="table-responsive-sm">
+                                                    <table class="table table-striped table-centered mb-0">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Title</th>
+                                                                <th>Action</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            {% for i in f %}
+                                                            <tr>
+                                                                <td class="table-user">
+                                                                    {{i.title|title}}
+                                                                </td>
+                                                                <td class="table-action">
+                                                                    <a href="{% url 'edit_subcatg' i.id %}" class="action-icon"> <i class="mdi mdi-pencil"></i></a>
+                                                                    <a href="{% url 'delete_subcatg' i.id %}" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                                                                </td>
+                                                            </tr>
+                                                            {% endfor %}
+                                                        </tbody>
+                                                    </table>
+                                                </div> <!-- end table-responsive-->                     
+                                            </div> <!-- end preview-->
+                                        
+                                        </div> <!-- end tab-content-->
+
+                                    </div> <!-- end card body-->
+                                </div> <!-- end card -->
+                            </div><!-- end col-->
+                        </div>
+{% endblock body %}
